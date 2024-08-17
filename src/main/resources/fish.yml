@@ -1,0 +1,18 @@
+1:
+  economies:
+    cash: 1451.3
+    escamas: 9981.4
+  name: "Nemo"
+  chance: 0.05
+  item:
+    material: "SKULL_ITEM"
+    data: 3
+    url: "http://textures.minecraft.net/texture/c740fa1fa9092e368e6798f9bcfe8c8318e03996a202beae919e5cb900039d4c"
+    name: "&aNemo"
+    lore:
+      - ""
+      - " &fCash: &6&l✪&6{CASH}"
+      - " &fEscamas: &5&l✟&5{ESCAMAS}"
+      - " &fQuantidade: &7{amount}"
+      - ""
+      - "&aClique aqui para vender"

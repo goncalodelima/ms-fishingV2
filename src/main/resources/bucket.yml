@@ -1,0 +1,16 @@
+item:
+  material: "SKULL_ITEM"
+  data: 3
+  slot: 2
+  url: "http://textures.minecraft.net/texture/4265bbe3939fd4dd0ab10a2b0c271a4aa0240a8895fc25944c176ff7913d7931"
+  name: "&bBalde: &8{progress_bar} &7({progress_raw}%)"
+  lore:
+    - ""
+    - "{fishes}"
+  fish-format: " &f{name} &3● &f{amount}"
+
+slot: 2
+capacity-per-level: 2000
+max-level: 2000
+price-per-level: 400000.0
+economy: "CASH"

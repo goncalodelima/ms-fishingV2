@@ -1,0 +1,22 @@
+title: "Pesca"
+size: 5
+layout:
+  - "         "
+  - "    I    "
+  - "         "
+  - "    B    "
+  - "   BBB   "
+
+info:
+  material: "WATER_BUCKET"
+  data: 0
+  amount: 1
+  name: "&aPesca"
+  lore:
+    - "&7Clique &7&laqui &7para acessar esta área."
+  glow: false
+
+booster:
+  lore:
+    - ""
+    - "&cClique para remover"

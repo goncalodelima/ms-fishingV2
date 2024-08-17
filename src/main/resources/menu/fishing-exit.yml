@@ -1,0 +1,40 @@
+title: "Pesca"
+size: 5
+layout:
+  - "         "
+  - "  F U R  "
+  - "         "
+  - "    B    "
+  - "   BBB   "
+
+bucket:
+  material: "SKULL_ITEM"
+  data: 3
+  url: "http://textures.minecraft.net/texture/4265bbe3939fd4dd0ab10a2b0c271a4aa0240a8895fc25944c176ff7913d7931"
+  name: "&6Balde"
+  lore:
+    - "&7Todos os peixes pescados"
+    - "&7irão para seu balde."
+    - ""
+    - " &8● &fTotal: &b{amount}"
+    - " &8● &fArmazém: &7{progress_raw}%"
+    - "   {progress_bar}"
+    - ""
+    - "&eClique aqui para visualizar seus peixes."
+  glow: false
+
+fishingrod:
+  material: "FISHING_ROD"
+  data: 0
+  name: "&eVara de Pesca"
+  lore:
+    - "&7Clique aqui para gerenciar a sua vara de pesca."
+  glow: false
+
+ranking:
+  material: "FIREWORK"
+  data: 0
+  name: "&eRanking"
+  lore:
+    - "&7Veja os melhores pescadores do servidor."
+  glow: false

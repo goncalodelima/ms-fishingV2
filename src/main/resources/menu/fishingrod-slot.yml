@@ -1,0 +1,26 @@
+title: "Encantamentos - Slot"
+size: 4
+layout:
+  - "         "
+  - "  EE EE  "
+  - "         "
+  - "    B    "
+
+back:
+  material: "ARROW"
+  data: 0
+  name: "&cVoltar"
+
+enchant:
+  name: "&6{name}"
+  lore:
+    - ""
+    - "{description}"
+    - ""
+    - " &fNível: &7{level}"
+    - ""
+    - "{status}"
+  status:
+    in-use: "&cEsse encantamento já está em uso no slot &c&l#{pos}"
+    no-use: "&eClique aqui para selecionar o encantamento."
+    remove: "&cClique aqui para desabilitar este encantamento."

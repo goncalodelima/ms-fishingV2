@@ -1,0 +1,55 @@
+title: "Pesca - Balde"
+size: 6
+layout:
+  - "         "
+  - "  FFFFF  "
+  - "  FFFFF  "
+  - "  FFFFF  "
+  - "         "
+  - "  U B S  "
+back:
+  material: "ARROW"
+  data: 0
+  name: "&cVoltar"
+sell:
+  empty:
+    material: "HOPPER"
+    data: 0
+    glow: false
+    name: "&aVender todos"
+    lore:
+      - "&7O seu balde está vazio!"
+  no-empty:
+    material: "HOPPER"
+    data: 0
+    glow: false
+    name: "&aVender todos"
+    lore:
+      - "&fQuantidade: &7{amount}"
+      - ""
+      - " &7Total de lucro:"
+      - "{profit}"
+      - ""
+      - "&aClique para executar a venda."
+    sell-format: "   &f{name} &7● {icon}{price}"
+upgrade:
+  material: "SKULL_ITEM"
+  data: 3
+  url: "http://textures.minecraft.net/texture/87337c2b4c1a03e7c0c0422355103a7832dc6487d766fcdf509d92f221e141f9"
+  name: "&6Melhorar Balde &7[{current_level} » {next_level}]"
+  lore:
+    - ""
+    - " &7A cada upgrade é adicionado"
+    - " &f&l+&f2K &7de capacidade."
+    - ""
+    - " &fCusto: {icon}{price}"
+    - " &fNível Máx: &72K"
+    - ""
+    - " &fCapacidade Atual: &7{current_capacity}"
+    - " &fCapacidade Máx: &7{max_capacity}"
+    - ""
+    - "{status}"
+  status:
+    has-founds: "&eClique aqui para upar o balde."
+    no-founds: "&cVocê não possui Cash o suficiente."
+    max-level: "&cO seu balde já está no nível máximo."

@@ -1,0 +1,15 @@
+database:
+  type: "MYSQL"
+  user: "root"
+  password: "plugindequalidade"
+  host: "localhost"
+  database: "rankup"
+  file: ""
+
+runnable: 36 #feito para timed out de 30 segundos no mysql para evitar problemas de corrida, Margem de erro de 6 segundos
+
+exit:
+  material: "BARRIER"
+  data: 0
+  name: "&cSair"
+  slot: 6

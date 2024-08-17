@@ -1,0 +1,25 @@
+title: "Vara - Encantamentos"
+size: 4
+layout:
+  - "         "
+  - "  EE EE  "
+  - "         "
+  - "    B    "
+back:
+  material: "ARROW"
+  data: 0
+  name: "&cVoltar"
+enchant:
+  name: "&6{name} &7[{current_level} » {next_level}]"
+  lore:
+    - ""
+    - "{description}"
+    - ""
+    - " &fCusto: {icon}{price}"
+    - " &fNível Máx: &7{max_level}"
+    - ""
+    - "{status}"
+  status:
+    max-level: "&cVocê já atingiu o nível máximo."
+    no-founds: "&cVocê não possui {currency} suficiente."
+    has-founds: "&eClique aqui para evoluir esse encantamento."

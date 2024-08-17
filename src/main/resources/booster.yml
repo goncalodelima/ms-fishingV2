@@ -1,0 +1,12 @@
+booster-1:
+  multiplier: 3.0
+  time: 60 #em segundos
+  item:
+    material: "SKULL_ITEM"
+    data: 3
+    url: "http://textures.minecraft.net/texture/cb4ae3a35ea8548e334d69ff878dfedb208215402fe966b7b8dfaa16b6a63b89"
+    name: "&aImpulsionador de Pesca"
+    lore:
+      - "&7Multiplicador: &f{multiplier}"
+      - "&7Duração: &f{time}"
+    glow: false

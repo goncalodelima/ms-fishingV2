@@ -1,0 +1,52 @@
+FAST:
+  name: "Veloz"
+  material: "SKULL_ITEM"
+  data: 3
+  url: "http://textures.minecraft.net/texture/6927e7c31957fda56fa704625e93631a5506d1403f416d8bc6888f820741b359"
+  description:
+    - " &7Com esse encantamento, aumenta a"
+    - " &7velocidade que você pesca os peixes."
+  currency: "cash"
+  price: 700000.0 #custo base
+  pricePerLevel: 700000.0 #custo por nivel
+  maxLevel: 35
+  bonus: 0.1 #diminui 0,1 segundos por nível
+LUCKY:
+  name: "Sortudo"
+  material: "SKULL_ITEM"
+  data: 3
+  url: "http://textures.minecraft.net/texture/ac4970ea91ab06ece59d45fce7604d255431f2e03a737b226082c4cce1aca1c4"
+  description:
+    - " &7Com esse encantamento, melhora a chance"
+    - " &7de vir recompensas durante a pesca."
+  currency: "cash"
+  price: 80000.0
+  pricePerLevel: 80000.0
+  maxLevel: 200
+  bonus: 0.01 #aumenta 1% de chance de vir recompensas
+FISHER:
+  name: "Pescador"
+  material: "SKULL_ITEM"
+  data: 3
+  url: "http://textures.minecraft.net/texture/d804e42ec9b07fce1ce0058b78df5763f6e410d9ce82ef1ebb9597a152b6d4c8"
+  description:
+    - " &7Com esse encantamento, aumenta a"
+    - " &7quantidade de peixes fisgados por vez."
+  currency: "cash"
+  price: 300000.0
+  pricePerLevel: 300000.0
+  maxLevel: 90
+  bonus: 3.0 #pode vir até mais 3 peixes por nível
+LUCK:
+  name: "Sorte"
+  material: "SKULL_ITEM"
+  data: 3
+  url: "http://textures.minecraft.net/texture/824a0f57f5e0e75fbc4f47140f076e02a1e17e2145ca82cf649faf90cf0fd982"
+  description:
+    - " &7Com esse encantamento, melhora a chance"
+    - " &7de vir peixes mais valiosos na pesca."
+  currency: "cash"
+  price: 240000.0
+  pricePerLevel: 240000.0
+  maxLevel: 220
+  bonus: 0.01 #aumenta 1% de chance de vir peixes mais valiosos

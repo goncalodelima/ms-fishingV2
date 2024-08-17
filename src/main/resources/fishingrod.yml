@@ -1,0 +1,15 @@
+item:
+  material: "FISHING_ROD"
+  data: 0
+  name: "&6Vara de Pesca"
+  lore:
+    - ""
+    - "{enchants}"
+  enchant-format: " &7{name} {level}"
+  slot: 4
+
+slot:
+  currency: "CASH"
+  price: 1000000.0
+
+default_time: 5.0 #em segundos

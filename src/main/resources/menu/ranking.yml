@@ -1,0 +1,41 @@
+ranking:
+  title: "Pesca - Ranking"
+  size: 6
+  layout:
+    - "         "
+    - " OOOOOOO "
+    - "  OOOOO  "
+    - "   OOO   "
+    - "         "
+    - "   B F   "
+  back:
+    material: "ARROW"
+    data: 0
+    name: "&cVoltar"
+  fish:
+    name: "&8{pos}º &f» &7{player}"
+    lore:
+      - "&fPeixes fisgados: &7{amount}"
+  time:
+    name: "&8{pos}º &f» &7{player}"
+    lore:
+      - "&fTempo de pesca: &7{time}"
+  filter:
+    material: "HOPPER"
+    data: 0
+    glow: false
+    name: "&aFiltro"
+    option-0:
+      lore:
+        - ""
+        - " &a● &fTotal de peixes fisgados"
+        - "  &8● &fTempo de pesca"
+        - ""
+        - "&aClique aqui para alterar o filtro"
+    option-1:
+      lore:
+        - ""
+        - "  &8● &fTotal de peixes fisgados"
+        - " &a● &fTempo de pesca"
+        - ""
+        - "&aClique aqui para alterar o filtro"

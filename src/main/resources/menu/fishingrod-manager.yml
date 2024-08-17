@@ -1,0 +1,69 @@
+title: "Vara - Gerenciador"
+size: 4
+layout:
+  - "         "
+  - " E SSSS  "
+  - "         "
+  - "   U B   "
+back:
+  material: "ARROW"
+  data: 0
+  name: "&cVoltar"
+enchant:
+  material: "SKULL_ITEM"
+  data: 3
+  url: "http://textures.minecraft.net/texture/b88d7c7b04f19ad809ef82f30b7a22ca050c7d7f936cc3355a5d3e899b77bf98"
+  name: "&6Encantamentos"
+  lore:
+    - "&7Veja os encantamentos disponíveis"
+    - "&7e dê upgrades neles."
+    - ""
+    - "&eClique aqui para acessar."
+upgrade:
+  status:
+    has-founds: "&6Clique para adquirir."
+    no-founds: "&cVocê não possui cash suficiente."
+  has-upgrade:
+    material: "SKULL_ITEM"
+    data: 3
+    url: "http://textures.minecraft.net/texture/706e7080a90ea2d047ed5a2ecc368eca6f4fa360bd3cb1853ec1f2f1b57661f4"
+    name: "&6Comprar &6&l+1 &6Slot"
+    lore:
+      - ""
+      - " &7Adquira mais slots para usar mais"
+      - " &7encantamentos na sua vara de pesca."
+      - ""
+      - " &fPreço: {icon}{price}"
+      - ""
+      - "{status}"
+  no-upgrade:
+    material: "SKULL_ITEM"
+    data: 3
+    url: "http://textures.minecraft.net/texture/706e7080a90ea2d047ed5a2ecc368eca6f4fa360bd3cb1853ec1f2f1b57661f4"
+    name: "&6Comprar &6&l+1 &6Slot"
+    lore:
+      - ""
+      - " &7Você não possui mais slots para comprar."
+      - ""
+slot:
+  lock:
+    material: "SKULL_ITEM"
+    data: 3
+    url: "http://textures.minecraft.net/texture/3ed1aba73f639f4bc42bd48196c715197be2712c3b962c97ebf9e9ed8efa025"
+    name: "&eSlot &e&l#{pos}"
+    lore:
+      - "&7Você ainda não liberou esse slot."
+  no-enchant:
+    material: "SKULL_ITEM"
+    data: 3
+    url: "http://textures.minecraft.net/texture/6b5e6ec6b878ac506e113f8609e1f80bcc381c9af96fa1be7d211cbbd4aaaddb"
+    name: "&bSlot &b&l#{pos}"
+    lore:
+      - "&7Clique para selecionar um encantamento."
+  has-enchant:
+    name: "&6Slot &6&l#{pos}"
+    lore:
+      - ""
+      - " &fEncantamento: &7{name}"
+      - ""
+      - "&eClique para alterar."
