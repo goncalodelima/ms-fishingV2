@@ -1,6 +1,7 @@
 package com.minecraftsolutions.fishing.model.bucket.repository;
 
 import com.minecraftsolutions.database.executor.DatabaseExecutor;
+import com.minecraftsolutions.fishing.FishingPlugin;
 import com.minecraftsolutions.fishing.model.bucket.Bucket;
 import com.minecraftsolutions.fishing.model.bucket.adapter.BucketAdapter;
 import lombok.AllArgsConstructor;
@@ -8,6 +9,7 @@ import com.minecraftsolutions.database.Database;
 
 import java.util.Collection;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
@@ -45,31 +47,33 @@ public class BucketRepository implements BucketFoundationRepository {
 
     @Override
     public void update(Collection<Bucket> buckets) {
-        try (DatabaseExecutor executor = database.execute()) {
+        CompletableFuture.runAsync(() -> {
+            try (DatabaseExecutor executor = database.execute()) {
 
-            executor
-                    .query("UPDATE fishing_bucket SET level = ? WHERE uniqueId = ?")
-                    .batch(buckets, (bucket, statement) -> {
-                        statement.set(1, bucket.getLevel());
-                        statement.set(2, bucket.getUniqueId().toString());
-                    });
+                executor
+                        .query("UPDATE fishing_bucket SET level = ? WHERE uniqueId = ?")
+                        .batch(buckets, (bucket, statement) -> {
+                            statement.set(1, bucket.getLevel());
+                            statement.set(2, bucket.getUniqueId().toString());
+                        });
 
-            executor
-                    .query("INSERT INTO fishing_bucket_fishes (uniqueId, fish, amount) VALUES(?,?,?) ON DUPLICATE KEY UPDATE amount = VALUES(amount)")
-                    .batch(buckets.stream()
-                                    .flatMap(bucket -> bucket.getFishes().entrySet().stream()
-                                            .map(entry -> new Object[]{
-                                                    bucket.getUniqueId().toString(),
-                                                    entry.getKey().getId(),
-                                                    entry.getValue()
-                                            }))
-                                    .collect(Collectors.toList()),
-                            (params, statement) -> {
-                                statement.set(1, params[0]);
-                                statement.set(2, params[1]);
-                                statement.set(3, params[2]);
-                            });
-        }
+                executor
+                        .query("INSERT INTO fishing_bucket_fishes (uniqueId, fish, amount) VALUES(?,?,?) ON DUPLICATE KEY UPDATE amount = VALUES(amount)")
+                        .batch(buckets.stream()
+                                        .flatMap(bucket -> bucket.getFishes().entrySet().stream()
+                                                .map(entry -> new Object[]{
+                                                        bucket.getUniqueId().toString(),
+                                                        entry.getKey().getId(),
+                                                        entry.getValue()
+                                                }))
+                                        .collect(Collectors.toList()),
+                                (params, statement) -> {
+                                    statement.set(1, params[0]);
+                                    statement.set(2, params[1]);
+                                    statement.set(3, params[2]);
+                                });
+            }
+        }, FishingPlugin.getInstance().getExecutor());
     }
 
     @Override

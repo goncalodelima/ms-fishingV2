@@ -1,6 +1,7 @@
 package com.minecraftsolutions.fishing.model.user.repository;
 
 import com.minecraftsolutions.database.executor.DatabaseExecutor;
+import com.minecraftsolutions.fishing.FishingPlugin;
 import com.minecraftsolutions.fishing.model.booster.Booster;
 import com.minecraftsolutions.fishing.model.fishingrod.FishingRod;
 import com.minecraftsolutions.fishing.model.user.User;
@@ -12,6 +13,7 @@ import com.minecraftsolutions.database.Database;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 
 @AllArgsConstructor
 public class UserRepository implements UserFoundationRepository {
@@ -50,15 +52,17 @@ public class UserRepository implements UserFoundationRepository {
 
     @Override
     public void update(Collection<User> users) {
-        try (DatabaseExecutor executor = database.execute()) {
-            executor
-                    .query("UPDATE fishing_user SET hookedFish = ?, fishingTime = ? WHERE nickname = ?")
-                    .batch(users, (user, statement) -> {
-                        statement.set(1, user.getHookedFish());
-                        statement.set(2, user.getFishingTime());
-                        statement.set(3, user.getNickname());
-                    });
-        }
+        CompletableFuture.runAsync(() -> {
+            try (DatabaseExecutor executor = database.execute()) {
+                executor
+                        .query("UPDATE fishing_user SET hookedFish = ?, fishingTime = ? WHERE nickname = ?")
+                        .batch(users, (user, statement) -> {
+                            statement.set(1, user.getHookedFish());
+                            statement.set(2, user.getFishingTime());
+                            statement.set(3, user.getNickname());
+                        });
+            }
+        }, FishingPlugin.getInstance().getExecutor());
     }
 
     @Override

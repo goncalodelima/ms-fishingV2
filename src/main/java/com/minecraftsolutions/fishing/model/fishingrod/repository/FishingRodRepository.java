@@ -12,6 +12,7 @@ import com.minecraftsolutions.database.Database;
 
 import java.util.Collection;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
@@ -49,37 +50,39 @@ public class FishingRodRepository implements FishingRodFoundationRepository {
 
     @Override
     public void update(Collection<FishingRod> fishingRods) {
-        try (DatabaseExecutor executor = database.execute()) {
-            executor
-                    .query("UPDATE fishing_rod SET enchant = ?, bought = ? WHERE uniqueId = ? AND position = ?")
-                    .batch(fishingRods.stream()
-                                    .flatMap(fishingRod -> fishingRod.getSlots().stream()
-                                            .map(slot -> new Object[]{slot.getEnchant() == null ? null : slot.getEnchant().getType().toString(),
-                                                    slot.isBought(),
-                                                    fishingRod.getUniqueId().toString(),
-                                                    slot.getPosition()}))
-                                    .collect(Collectors.toList()),
-                            (params, statement) -> {
-                                statement.set(1, params[0]);
-                                statement.set(2, params[1]);
-                                statement.set(3, params[2]);
-                                statement.set(4, params[3]);
-                            });
+        CompletableFuture.runAsync(() -> {
+            try (DatabaseExecutor executor = database.execute()) {
+                executor
+                        .query("UPDATE fishing_rod SET enchant = ?, bought = ? WHERE uniqueId = ? AND position = ?")
+                        .batch(fishingRods.stream()
+                                        .flatMap(fishingRod -> fishingRod.getSlots().stream()
+                                                .map(slot -> new Object[]{slot.getEnchant() == null ? null : slot.getEnchant().getType().toString(),
+                                                        slot.isBought(),
+                                                        fishingRod.getUniqueId().toString(),
+                                                        slot.getPosition()}))
+                                        .collect(Collectors.toList()),
+                                (params, statement) -> {
+                                    statement.set(1, params[0]);
+                                    statement.set(2, params[1]);
+                                    statement.set(3, params[2]);
+                                    statement.set(4, params[3]);
+                                });
 
-            executor
-                    .query("INSERT INTO fishing_rod_enchant (uniqueId, enchant, level) VALUES(?,?,?) ON DUPLICATE KEY UPDATE level = VALUES(level)")
-                    .batch(fishingRods.stream()
-                                    .flatMap(fishingRod -> fishingRod.getEnchantsLevel().entrySet().stream()
-                                            .map(entry -> new Object[]{fishingRod.getUniqueId().toString(),
-                                                    entry.getKey().getType().toString(),
-                                                    entry.getValue()}))
-                                    .collect(Collectors.toList()),
-                            (params, statement) -> {
-                                statement.set(1, params[0]);
-                                statement.set(2, params[1]);
-                                statement.set(3, params[2]);
-                            });
-        }
+                executor
+                        .query("INSERT INTO fishing_rod_enchant (uniqueId, enchant, level) VALUES(?,?,?) ON DUPLICATE KEY UPDATE level = VALUES(level)")
+                        .batch(fishingRods.stream()
+                                        .flatMap(fishingRod -> fishingRod.getEnchantsLevel().entrySet().stream()
+                                                .map(entry -> new Object[]{fishingRod.getUniqueId().toString(),
+                                                        entry.getKey().getType().toString(),
+                                                        entry.getValue()}))
+                                        .collect(Collectors.toList()),
+                                (params, statement) -> {
+                                    statement.set(1, params[0]);
+                                    statement.set(2, params[1]);
+                                    statement.set(3, params[2]);
+                                });
+            }
+        }, FishingPlugin.getInstance().getExecutor());
     }
 
     @Override
