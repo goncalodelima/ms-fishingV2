@@ -4,6 +4,7 @@ import com.minecraftsolutions.fishing.model.bucket.Bucket;
 
 import java.util.Collection;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
 public interface BucketFoundationRepository {
 
@@ -11,7 +12,7 @@ public interface BucketFoundationRepository {
 
     void insert(Bucket bucket);
 
-    void update(Collection<Bucket> buckets);
+    CompletableFuture<Void> update(Collection<Bucket> buckets);
 
     Bucket findOne(UUID uniqueId);
 

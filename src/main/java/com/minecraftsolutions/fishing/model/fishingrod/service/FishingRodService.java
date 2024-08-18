@@ -6,6 +6,7 @@ import com.minecraftsolutions.fishing.model.fishingrod.repository.FishingRodRepo
 import com.minecraftsolutions.database.Database;
 
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class FishingRodService implements FishingRodFoundationService{
@@ -31,8 +32,8 @@ public class FishingRodService implements FishingRodFoundationService{
     }
 
     @Override
-    public void update(Collection<FishingRod> fishingRods) {
-        this.fishingRodRepository.update(fishingRods);
+    public CompletableFuture<Void> update(Collection<FishingRod> fishingRods) {
+        return this.fishingRodRepository.update(fishingRods);
     }
 
     @Override

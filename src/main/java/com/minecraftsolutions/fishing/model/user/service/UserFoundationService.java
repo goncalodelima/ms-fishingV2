@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 public interface UserFoundationService {
 
@@ -16,7 +17,7 @@ public interface UserFoundationService {
 
     void update(User user);
 
-    void update(Collection<User> users);
+    CompletableFuture<Void> update(Collection<User> users);
 
     void updateBoosters(User user);
 

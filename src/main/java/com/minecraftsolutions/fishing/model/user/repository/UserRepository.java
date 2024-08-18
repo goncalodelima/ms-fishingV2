@@ -51,8 +51,8 @@ public class UserRepository implements UserFoundationRepository {
     }
 
     @Override
-    public void update(Collection<User> users) {
-        CompletableFuture.runAsync(() -> {
+    public CompletableFuture<Void> update(Collection<User> users) {
+        return CompletableFuture.runAsync(() -> {
             try (DatabaseExecutor executor = database.execute()) {
                 executor
                         .query("UPDATE fishing_user SET hookedFish = ?, fishingTime = ? WHERE nickname = ?")

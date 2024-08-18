@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
 public interface FishingRodFoundationService {
 
@@ -13,7 +14,7 @@ public interface FishingRodFoundationService {
 
     void update(FishingRod fishingRod);
 
-    void update(Collection<FishingRod> fishingRods);
+    CompletableFuture<Void> update(Collection<FishingRod> fishingRods);
 
     void remove(FishingRod fishingRod);
 

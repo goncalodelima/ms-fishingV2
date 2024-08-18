@@ -5,6 +5,7 @@ import com.minecraftsolutions.fishing.model.user.User;
 
 import java.util.Collection;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 
 public interface UserFoundationRepository {
 
@@ -12,7 +13,7 @@ public interface UserFoundationRepository {
 
     void insert(User user);
 
-    void update(Collection<User> users);
+    CompletableFuture<Void> update(Collection<User> users);
 
     void updateBoosters(User user);
 

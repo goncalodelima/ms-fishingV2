@@ -49,8 +49,8 @@ public class FishingRodRepository implements FishingRodFoundationRepository {
     }
 
     @Override
-    public void update(Collection<FishingRod> fishingRods) {
-        CompletableFuture.runAsync(() -> {
+    public CompletableFuture<Void> update(Collection<FishingRod> fishingRods) {
+        return CompletableFuture.runAsync(() -> {
             try (DatabaseExecutor executor = database.execute()) {
                 executor
                         .query("UPDATE fishing_rod SET enchant = ?, bought = ? WHERE uniqueId = ? AND position = ?")

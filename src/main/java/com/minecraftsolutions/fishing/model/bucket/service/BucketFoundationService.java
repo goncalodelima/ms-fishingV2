@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
 public interface BucketFoundationService {
 
@@ -13,7 +14,7 @@ public interface BucketFoundationService {
 
     void update(Bucket bucket);
 
-    void update(Collection<Bucket> buckets);
+    CompletableFuture<Void> update(Collection<Bucket> buckets);
 
     void remove(Bucket bucket);
 

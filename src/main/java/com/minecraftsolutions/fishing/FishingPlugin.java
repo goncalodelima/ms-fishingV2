@@ -119,15 +119,16 @@ public class FishingPlugin extends JavaPlugin {
     @Override
     public void onDisable() {
 
+        userService.getAll().forEach(userController::exitFishingArea);
+
         Map<UUID, Bucket> buckets = FishingPlugin.getInstance().getBucketService().getPendingUpdates();
         Map<UUID, FishingRod> fishingRods = FishingPlugin.getInstance().getFishingRodService().getPendingUpdates();
         Map<String, User> users = FishingPlugin.getInstance().getUserService().getPendingUpdates();
 
-        FishingPlugin.getInstance().getBucketService().update(buckets.values());
-        FishingPlugin.getInstance().getFishingRodService().update(fishingRods.values());
-        FishingPlugin.getInstance().getUserService().update(users.values());
+        FishingPlugin.getInstance().getBucketService().update(buckets.values()).join();
+        FishingPlugin.getInstance().getFishingRodService().update(fishingRods.values()).join();
+        FishingPlugin.getInstance().getUserService().update(users.values()).join();
 
-        userService.getAll().forEach(userController::exitFishingArea);
         datacenter.close();
         executor.shutdown();
 

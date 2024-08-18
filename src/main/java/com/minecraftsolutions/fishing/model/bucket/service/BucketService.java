@@ -6,6 +6,7 @@ import com.minecraftsolutions.fishing.model.bucket.repository.BucketRepository;
 import com.minecraftsolutions.database.Database;
 
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class BucketService implements BucketFoundationService {
@@ -31,8 +32,8 @@ public class BucketService implements BucketFoundationService {
     }
 
     @Override
-    public void update(Collection<Bucket> buckets) {
-        this.bucketRepository.update(buckets);
+    public CompletableFuture<Void> update(Collection<Bucket> buckets) {
+        return this.bucketRepository.update(buckets);
     }
 
     @Override

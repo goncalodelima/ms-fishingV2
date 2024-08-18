@@ -4,6 +4,7 @@ import com.minecraftsolutions.fishing.model.fishingrod.FishingRod;
 
 import java.util.Collection;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
 public interface FishingRodFoundationRepository {
 
@@ -11,7 +12,7 @@ public interface FishingRodFoundationRepository {
 
     void insert(FishingRod fishingRod);
 
-    void update(Collection<FishingRod> fishingRods);
+    CompletableFuture<Void> update(Collection<FishingRod> fishingRods);
 
     FishingRod findOne(UUID uniqueId);
 

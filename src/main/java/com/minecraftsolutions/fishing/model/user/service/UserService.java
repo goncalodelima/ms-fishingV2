@@ -10,6 +10,7 @@ import com.minecraftsolutions.fishing.model.user.repository.UserRepository;
 import com.minecraftsolutions.database.Database;
 
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
@@ -42,8 +43,8 @@ public class UserService implements UserFoundationService{
     }
 
     @Override
-    public void update(Collection<User> users) {
-        this.userRepository.update(users);
+    public CompletableFuture<Void> update(Collection<User> users) {
+        return this.userRepository.update(users);
     }
 
     @Override

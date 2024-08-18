@@ -46,8 +46,8 @@ public class BucketRepository implements BucketFoundationRepository {
     }
 
     @Override
-    public void update(Collection<Bucket> buckets) {
-        CompletableFuture.runAsync(() -> {
+    public CompletableFuture<Void> update(Collection<Bucket> buckets) {
+        return CompletableFuture.runAsync(() -> {
             try (DatabaseExecutor executor = database.execute()) {
 
                 executor
