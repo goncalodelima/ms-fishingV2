@@ -5,6 +5,7 @@ import com.minecraftsolutions.fishing.model.fishingrod.FishingRod;
 import com.minecraftsolutions.fishing.model.user.User;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.UUID;
 
@@ -17,9 +18,9 @@ public class UpdateRunnable extends BukkitRunnable {
         Map<UUID, FishingRod> fishingRods = FishingPlugin.getInstance().getFishingRodService().getPendingUpdates();
         Map<String, User> users = FishingPlugin.getInstance().getUserService().getPendingUpdates();
 
-        FishingPlugin.getInstance().getBucketService().update(buckets.values());
-        FishingPlugin.getInstance().getFishingRodService().update(fishingRods.values());
-        FishingPlugin.getInstance().getUserService().update(users.values());
+        FishingPlugin.getInstance().getBucketService().update(new ArrayList<>(buckets.values()));
+        FishingPlugin.getInstance().getFishingRodService().update(new ArrayList<>(fishingRods.values()));
+        FishingPlugin.getInstance().getUserService().update(new ArrayList<>(users.values()));
 
         buckets.clear();
         fishingRods.clear();
